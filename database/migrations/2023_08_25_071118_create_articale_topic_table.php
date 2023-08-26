@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('articale_topic', function (Blueprint $table) {
-            $table->foreignId('topic_id');
+            $table->foreignId('topic_id')->index();
             $table->foreign('topic_id')->references('id')->on('topics')->cascadeOnDelete();
 
-            $table->foreignId('article_id');
+            $table->foreignId('article_id')->index();
             $table->foreign('article_id')->references('id')->on('articles')->cascadeOnDelete();
             
             $table->primary(['topic_id','article_id']);

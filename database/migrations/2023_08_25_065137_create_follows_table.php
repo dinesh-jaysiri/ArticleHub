@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('follows', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->index();
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->foreignId('followed_id');
+            $table->foreignId('followed_id')->index();
             $table->foreign('followed_id')->references('id')->on('users');
 
             $table->timestamps();

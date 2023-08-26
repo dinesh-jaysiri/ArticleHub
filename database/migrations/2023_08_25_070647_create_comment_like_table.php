@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('comment_like', function (Blueprint $table) {
             $table->foreignId('comment_id')->index();
-            $table->foreign('comment_id')->references('id')->on('comments');
-            
+            $table->foreign('comment_id')->references('id')->on('comments')->cascadeOnDelete();
+
             $table->foreignId('user_id')->index();
             $table->foreign('user_id')->references('id')->on('users');
             $table->primary(['comment_id','user_id']);

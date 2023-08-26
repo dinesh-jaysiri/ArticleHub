@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->tinyText('body');
             $table->foreignId('article_id')->index();
-            $table->foreign('article_id')->references('id')->on('articles');
+            $table->foreign('article_id')->references('id')->on('articles')->cascadeOnDelete();
 
 
             $table->foreignId('user_id')->index();
