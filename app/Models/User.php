@@ -44,17 +44,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function articleLikes (){
-        return $this->belongsToMany(Article::class,'article_like','user_id','article_id');
-    }
+   
 
 
     public function country (){
         return $this->belongsTo(Country::class, 'country_id');
-    }
-
-    public function topics (){
-        return $this->belongsToMany(Topic::class, 'topic_user','user_id','topic_id');
     }
 
     public function following()
@@ -76,5 +70,16 @@ class User extends Authenticatable
 
     public function  subscribers(){
         return $this->hasMany(Subscribe::class, 'subscribed_id');
+    }
+
+    // pivot tables
+    public function articleLikes()
+    {
+        return $this->belongsToMany(Article::class, 'article_like', 'user_id', 'article_id');
+    }
+
+    public function topics()
+    {
+        return $this->belongsToMany(Topic::class, 'topic_user', 'user_id', 'topic_id');
     }
 }

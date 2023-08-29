@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Article;
+use App\Models\User;
 use Database\Seeders\Traits\DisableForeignKeys;
 use Database\Seeders\Traits\TruncateTable;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,7 +19,15 @@ class ArticleSeeder extends Seeder
     {
         $this->disableForeignKeys();
         $this->truncate('articles');
-        \App\Models\Article::factory(20)->create();
+        $this->truncate('article_like');
+
+        //create users
+        $articles = Article::factory(20)->create();
+
+        // seeding pivot tables
+        foreach ($articles as $article) {
+            $article->likes()->sync(User::pluck('id')->random(4));
+        }
         $this->enableForeignKeys();
     }
 }
