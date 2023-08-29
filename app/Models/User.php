@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Follow;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -42,4 +43,38 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function articleLikes (){
+        return $this->belongsToMany(Article::class,'article_like','user_id','article_id');
+    }
+
+
+    public function country (){
+        return $this->belongsTo(Country::class, 'country_id');
+    }
+
+    public function topics (){
+        return $this->belongsToMany(Topic::class, 'topic_user','user_id','topic_id');
+    }
+
+    public function following()
+    {
+        return $this->hasMany(Follow::class, 'user_id');
+
+    }
+
+    public function followers()
+    {
+        return $this->hasMany(Follow::class, 'followed_id');
+
+    }
+
+    public function subscribing()
+    {
+        return $this->hasMany(Subscribe::class, 'user_id');
+    }
+
+    public function  subscribers(){
+        return $this->hasMany(Subscribe::class, 'subscribed_id');
+    }
 }

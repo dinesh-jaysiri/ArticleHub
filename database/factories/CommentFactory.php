@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Article;
+use App\Models\User;
+use Database\Factories\Helpers\FactoryHelper;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +19,17 @@ class CommentFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            //
+            'body' => fake()->text(),
+            'article_id' => FactoryHelper::getRandomModelid(Article::class),
+            'user_id' => FactoryHelper::getRandomModelid(User::class),
+            'parent_id' => null
+
         ];
+
+
     }
+
+    
 }

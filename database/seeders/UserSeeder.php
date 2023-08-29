@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
+
 use Database\Seeders\Traits\DisableForeignKeys;
 use Database\Seeders\Traits\TruncateTable;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CountrySeeder extends Seeder
+class UserSeeder extends Seeder
 {
     use TruncateTable, DisableForeignKeys;
     /**
@@ -16,9 +16,8 @@ class CountrySeeder extends Seeder
     public function run(): void
     {
         $this->disableForeignKeys();
-        $this->truncate('countries');
-        \App\Models\Country::factory(20)->create();
+        $this->truncate('users');
+        \App\Models\User::factory(12)->create();
         $this->enableForeignKeys();
-
     }
 }

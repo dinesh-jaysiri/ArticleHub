@@ -17,7 +17,8 @@ class CountryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->unique()->country(),
+            'iso_code'=> fake()->unique()->countryISOAlpha3(),
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use Database\Factories\Helpers\FactoryHelper;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,11 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+
+            'title' => fake()->word(),
+            'slug' =>fake()->slug(),
+            'body' =>['body'=>fake()->text()],
+            'user_id' => FactoryHelper::getRandomModelid(User::class),
         ];
     }
 }

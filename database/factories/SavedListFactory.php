@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use Database\Factories\Helpers\FactoryHelper;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,12 @@ class SavedListFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+
+            'name' => fake()->name(),
+            'user_id' => FactoryHelper::getRandomModelid(User::class)
+            // $table->string('name',255);
+
+            // $table->foreignId('user_id');
         ];
     }
 }

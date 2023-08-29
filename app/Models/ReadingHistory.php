@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ReadingHistory extends Model
 {
     use HasFactory;
+    protected $casts = [
+        'read_at' => 'datetime'
+    ];
 }
