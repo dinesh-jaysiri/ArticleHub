@@ -14,14 +14,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/users', function(){
 
-    return new JsonResponse([
-        'data'=>['name'=>'dinesh', 'age'=>27]
 
-    ]);
-
-});
+require __DIR__ . '/api/users.php';
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -6,7 +6,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 
-class ArticleController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
