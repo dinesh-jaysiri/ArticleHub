@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\Routes\RouteHelper;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-require __DIR__ . '/api/users.php';
+// atomatically load api routes 
+RouteHelper::includeRouteFiles(__DIR__ . '/api');
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
